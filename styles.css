@@ -1,4 +1,5 @@
 @import "./global.css";
+@import "./utils.css";
 
 @import "./components/bookmark/bookmark.css";
 @import "./components/card-list/card-list.css";
