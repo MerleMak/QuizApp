@@ -1,3 +1,4 @@
+// Darkmode
 // Retrieve the current theme from localStorage
 let currentTheme = localStorage.getItem("theme");
 
@@ -32,3 +33,29 @@ if (darkmodeSwitch) {
     }
   });
 }
+
+// Toggle Bookmarks
+
+const bookmarkButtons = document.querySelectorAll(".bookmark");
+
+// Load initial bookmark states from local storage
+bookmarkButtons.forEach((button, index) => {
+  const storedState = localStorage.getItem("bookmarkState" + index);
+  if (storedState === "true") {
+    button.classList.add("bookmark--active");
+  }
+});
+
+// Add click event listener to each bookmark button
+bookmarkButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    // Toggle the 'bookmark--active' class
+    button.classList.toggle("bookmark--active");
+
+    // Check if the 'bookmark--active' class is now present and assign the result to isActive
+    const isActive = button.classList.contains("bookmark--active");
+
+    // Save the new state to local storage
+    localStorage.setItem("bookmarkState" + index, isActive);
+  });
+});
